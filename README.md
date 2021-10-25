@@ -1,6 +1,6 @@
 ## VidVRD-II
 
-This repository contains source codes for "Video Visual Relation Detection via Iterative Inference" [[paper](https://xdshang.github.io/assets/pdf/VidVRD-II-preprint.pdf)] to be presented at ACM MM 2021.
+This repository contains source codes for "Video Visual Relation Detection via Iterative Inference" (MM'21) [[paper](https://dl.acm.org/doi/abs/10.1145/3474085.3475263)].
 
 ### Environment
 1. Download [ImageNet-VidVRD dataset](https://xdshang.github.io/docs/imagenet-vidvrd.html) and [VidOR dataset](https://xdshang.github.io/docs/vidor.html). Then, place the data under the same parent folder as this repository (recommended):
@@ -46,9 +46,10 @@ python setup.py build_ext --inplace
 This repository is built based on [VidVRD-helper](https://github.com/xdshang/VidVRD-helper). If this repo is helpful in your research, you can use the following bibtex to cite the paper:
 ```
 @inproceedings{shang2021video,
-    author={Shang, Xindi and Li, Yicong and Xiao, Junbin and Ji, Wei and Chua, Tat-Seng},
-    title={Video Visual Relation Detection via Iterative Inference},
-    booktitle={ACM International Conference on Multimedia},
-    year={2021}
+  title={Video Visual Relation Detection via Iterative Inference},
+  author={Shang, Xindi and Li, Yicong and Xiao, Junbin and Ji, Wei and Chua, Tat-Seng},
+  booktitle={Proceedings of the 29th ACM International Conference on Multimedia},
+  pages={3654--3663},
+  year={2021}
 }
 ```

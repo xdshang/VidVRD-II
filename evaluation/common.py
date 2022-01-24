@@ -44,17 +44,17 @@ def iou(bbox_1, bbox_2):
     :param bbox_2:
     :return: IoU
     """
-    w_1 = bbox_1[2] - bbox_1[0] + 1
-    h_1 = bbox_1[3] - bbox_1[1] + 1
-    w_2 = bbox_2[2] - bbox_2[0] + 1
-    h_2 = bbox_2[3] - bbox_2[1] + 1
+    w_1 = bbox_1[2] - bbox_1[0]
+    h_1 = bbox_1[3] - bbox_1[1]
+    w_2 = bbox_2[2] - bbox_2[0]
+    h_2 = bbox_2[3] - bbox_2[1]
     area_1 = w_1 * h_1
     area_2 = w_2 * h_2
 
     overlap_bbox = (max(bbox_1[0], bbox_2[0]), max(bbox_1[1], bbox_2[1]),
                     min(bbox_1[2], bbox_2[2]), min(bbox_1[3], bbox_2[3]))
-    overlap_w = max(0, (overlap_bbox[2] - overlap_bbox[0] + 1))
-    overlap_h = max(0, (overlap_bbox[3] - overlap_bbox[1] + 1))
+    overlap_w = max(0, (overlap_bbox[2] - overlap_bbox[0]))
+    overlap_h = max(0, (overlap_bbox[3] - overlap_bbox[1]))
 
     overlap_area = overlap_w * overlap_h
     union_area = area_1 + area_2 - overlap_area
@@ -96,11 +96,11 @@ def viou(traj_1, duration_1, traj_2, duration_2):
         top = max(roi_1[1], roi_2[1])
         right = min(roi_1[2], roi_2[2])
         bottom = min(roi_1[3], roi_2[3])
-        v_overlap += max(0, right - left + 1) * max(0, bottom - top + 1)
+        v_overlap += max(0, right - left) * max(0, bottom - top)
     v1 = 0
     for i in range(len(traj_1)):
-        v1 += (traj_1[i][2] - traj_1[i][0] + 1) * (traj_1[i][3] - traj_1[i][1] + 1)
+        v1 += (traj_1[i][2] - traj_1[i][0]) * (traj_1[i][3] - traj_1[i][1])
     v2 = 0
     for i in range(len(traj_2)):
-        v2 += (traj_2[i][2] - traj_2[i][0] + 1) * (traj_2[i][3] - traj_2[i][1] + 1)
+        v2 += (traj_2[i][2] - traj_2[i][0]) * (traj_2[i][3] - traj_2[i][1])
     return float(v_overlap) / max(v1 + v2 - v_overlap, 1e-8)
